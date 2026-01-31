@@ -6,10 +6,10 @@ Add additional animals/images starting at like 89 in 'const animals'.
 
 Built with **pure HTML, CSS, and JavaScript** — no frameworks, no installs. 
 
- --Why Live Server Is Used --
+** --Why Live Server Is Used --**
 
-Live Server runs the project as a small local web server, which allows the browser to safely load images and files using JavaScript. Browsers restrict file access when opening HTML directly (`file:///`), so a local server is required for dynamic behavior. Download extension "Live Server" by Ritwick Dey. 
----
+Live Server runs the project as a small local web server, which allows the browser to safely load images and files using JavaScript. Browsers restrict file access when opening HTML directly (`file:///`), so a local server is required for dynamic behavior. Download extension "Live Server" by Ritwick Dey.
+
 
 How the Game Works
 
