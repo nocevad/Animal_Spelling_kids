@@ -6,7 +6,9 @@ Add additional animals/images starting at like 89 in 'const animals'.
 
 Built with **pure HTML, CSS, and JavaScript** — no frameworks, no installs. 
 
-RECOMMENDED: Download extension "Live Server" by Ritwick Dey (VS Code) to open and play quickly. Right click the HTML file and select "Open with Live Server" - -> easy way to quickly turn the page on when dealing with kids. 
+ --Why Live Server Is Used --
+
+Live Server runs the project as a small local web server, which allows the browser to safely load images and files using JavaScript. Browsers restrict file access when opening HTML directly (`file:///`), so a local server is required for dynamic behavior. Download extension "Live Server" by Ritwick Dey. 
 ---
 
 How the Game Works
