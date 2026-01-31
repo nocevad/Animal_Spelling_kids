@@ -1,8 +1,8 @@
 Animal_Spelling_kids
 
-A simple, kid-friendly browser game that helps children learn **letters and animal spelling** using **pictures and interactive buttons**. Create it to get my daughter into computers and practice her spelling. She is nearly 4 years old. She had a little trouble managing the mouse but overall she played for it for almost an hour.  I had to help with some of the words to spell. Considering it only took an hour to create, seemed like a good deal. 
+A simple, kid-friendly browser game that helps children learn **letters and animal spelling** using **pictures and interactive buttons**. Created it to get my daughter into computers and practice her spelling. She is nearly 4 years old. She had a little trouble managing the mouse but overall she played it for almost an hour. Considering it only took an half hour to create, seemed like a good deal. 
 
-Add additional animals/images starting at like 89 in const animals. 
+Add additional animals/images starting at like 89 in 'const animals'. 
 
 Built with **pure HTML, CSS, and JavaScript** — no frameworks, no installs. 
 
