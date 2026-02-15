@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Animal Spelling Game 🐶</title>
+
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #fbc2eb, #a6c1ee);
+    text-align: center;
+    padding: 30px;
+}
+
+h1 {
+    font-size: 36px;
+}
+
+img {
+    width: 300px;
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+    margin: 20px 0;
+}
+
+.word {
+    font-size: 40px;
+    letter-spacing: 15px;
+    margin: 20px;
+}
+
+.letters {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    max-width: 500px;
+    margin: auto;
+}
+
+button {
+    font-size: 22px;
+    padding: 10px 16px;
+    border: none;
+    border-radius: 10px;
+    background-color: #6a5acd;
+    color: white;
+    cursor: pointer;
+}
+
+button:disabled {
+    background-color: #aaa;
+}
+
+.message {
+    font-size: 26px;
+    margin-top: 20px;
+    color: green;
+}
+</style>
+</head>
+
+<body>
+
+<h1>Spell the Animal 🐾</h1>
+
+<img id="animalImg" src="" alt="Animal">
+
+<div class="word" id="word"></div>
+
+<div class="letters" id="letters"></div>
+
+<div class="message" id="message"></div>
+
+<script>
+const animals = [
+  { name: "PIG", image: "images/pig.jpg" },
+  { name: "DUCK", image: "images/duck.jpg" },
+  { name: "ELEPHANT", image: "images/elephant.jpg" },
+  { name: "GIRAFFE", image: "images/giraffe.jpg" },
+  { name: "GOAT", image: "images/goat.jpg" },
+  { name: "HORSE", image: "images/horse.jpg" },
+  { name: "KANGAROO", image: "images/kangaroo.jpg" },
+  { name: "MONKEY", image: "images/monkey.jpg" },
+  { name: "ZEBRA", image: "images/zebra.jpg" },
+  { name: "SNAKE", image: "images/snake.jpg" },
+  { name: "ROOSTER", image: "images/rooster.jpg" },
+  { name: "COW", image: "images/cow.jpg" },
+  { name: "TIGER", image: "images/tiger.jpg" }
+];
+
+let current = 0;
+let guessed = [];
+
+const img = document.getElementById("animalImg");
+const wordDiv = document.getElementById("word");
+const lettersDiv = document.getElementById("letters");
+const message = document.getElementById("message");
+
+function loadAnimal() {
+    guessed = [];
+    message.textContent = "";
+    lettersDiv.innerHTML = "";
+
+    const animal = animals[current];
+    img.src = animal.image;
+
+    // blanks
+    wordDiv.innerHTML = animal.name
+        .split("")
+        .map(l => guessed.includes(l) ? l : "_")
+        .join(" ");
+
+    // alphabet buttons
+    "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("").forEach(letter => {
+        const btn = document.createElement("button");
+        btn.textContent = letter;
+
+        btn.onclick = () => guessLetter(letter, btn);
+        lettersDiv.appendChild(btn);
+    });
+}
+
+function guessLetter(letter, btn) {
+    btn.disabled = true;
+
+    const name = animals[current].name;
+
+    if (name.includes(letter)) {
+        guessed.push(letter);
+        updateWord();
+
+        if (!wordDiv.textContent.includes("_")) {
+            message.textContent = "Great job! 🎉";
+            setTimeout(nextAnimal, 1500);
+        }
+    }
+}
+
+function updateWord() {
+    const name = animals[current].name;
+    wordDiv.innerHTML = name
+        .split("")
+        .map(l => guessed.includes(l) ? l : "_")
+        .join(" ");
+}
+
+function nextAnimal() {
+    current = (current + 1) % animals.length;
+    loadAnimal();
+}
+
+loadAnimal();
+</script>
+
+</body>
+</html>
