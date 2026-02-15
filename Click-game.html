@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Mega Click Party 🎉🦄</title>
+
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #fbc2eb, #a6c1ee);
+    text-align: center;
+    padding: 20px;
+    overflow: hidden;
+}
+
+h1 {
+    font-size: 40px;
+    margin-bottom: 20px;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 20px;
+    max-width: 900px;
+    margin: auto;
+}
+
+.grid img {
+    width: 100%;
+    border-radius: 20px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.grid img:hover {
+    transform: scale(1.05);
+}
+
+/* BIG click effects */
+.effect {
+    position: absolute;
+    font-size: 60px;
+    pointer-events: none;
+    animation: popFloat 1.8s ease-out forwards;
+}
+
+@keyframes popFloat {
+    0% {
+        transform: translate(-50%, -50%) scale(0.5) rotate(0deg);
+        opacity: 1;
+    }
+    100% {
+        transform: translate(-50%, -150%) scale(2) rotate(360deg);
+        opacity: 0;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<h1>Click the Pictures! 💖✨ Which computer do i want </h1>
+
+<div class="grid" id="grid"></div>
+
+<script>
+const images = [
+  "images/pig.jpg",
+  "images/duck.jpg",
+  "images/elephant.jpg",
+  "images/giraffe.jpg",
+  "images/goat.jpg",
+  "images/horse.jpg",
+  "images/kangaroo.jpg",
+  "images/monkey.jpg",
+  "images/zebra.jpg",
+  "images/snake.jpg",
+  "images/rooster.jpg",
+  "images/cow.jpg",
+  "images/tiger.jpg",
+    "images/pig.jpg",
+  "images/duck.jpg",
+  "images/elephant.jpg",
+  "images/giraffe.jpg",
+  "images/goat.jpg",
+  "images/horse.jpg",
+  "images/kangaroo.jpg",
+  "images/monkey.jpg",
+  "images/zebra.jpg",
+  "images/snake.jpg",
+  "images/rooster.jpg",
+  "images/cow.jpg",
+  "images/tiger.jpg"
+];
+
+const effects = [
+  "💖","💖","💖",
+  "🌈","🦄","⭐","✨",
+  "🎈","🎉","🎊",
+  "🦋","😊","😍","😄"
+];
+
+const grid = document.getElementById("grid");
+
+images.forEach(src => {
+    const img = document.createElement("img");
+    img.src = src;
+
+    img.addEventListener("click", e => {
+        for (let i = 0; i < 6; i++) {
+            createEffect(
+                e.clientX + random(-60, 60),
+                e.clientY + random(-60, 60)
+            );
+        }
+    });
+
+    grid.appendChild(img);
+});
+
+document.addEventListener("click", e => {
+    if (!e.target.tagName === "IMG") {
+        createEffect(e.clientX, e.clientY);
+    }
+});
+
+function createEffect(x, y) {
+    const el = document.createElement("div");
+    el.className = "effect";
+    el.textContent = effects[Math.floor(Math.random() * effects.length)];
+    el.style.left = x + "px";
+    el.style.top = y + "px";
+    document.body.appendChild(el);
+
+    setTimeout(() => el.remove(), 1800);
+}
+
+function random(min, max) {
+    return Math.random() * (max - min) + min;
+}
+</script>
+
+</body>
+</html>
